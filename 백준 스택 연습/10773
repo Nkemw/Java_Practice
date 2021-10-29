@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		Stack<Integer> st = new Stack();
+		Scanner scan = new Scanner(System.in);
+		
+		int repeat_num = scan.nextInt();
+		int temp = 0;
+		
+		for(int i = 0; i < repeat_num; i++) {
+			temp = scan.nextInt();
+			if(temp == 0) {
+				st.pop();
+			} else {
+				st.add(temp);
+			}
+		}
+		
+		temp = 0;
+		int size = st.size();
+		
+		for(int i = 0; i < size; i++ ) {
+			temp += st.pop();
+		}
+		
+		System.out.print(temp);
+		
+	}
+
+}
