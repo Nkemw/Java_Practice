@@ -1,0 +1,84 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args) throws IOException{
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		
+		String repeat = "";
+		
+		while(!(repeat = br.readLine()).equals(".")) {
+			boolean result = true;
+			Stack<Integer> stack = new Stack();
+			for(int j = 0; j < repeat.length(); j++) {
+				stack.add((int) repeat.charAt(j));
+			}
+			
+			if(stack.peek() == '(' || stack.peek() == '[') {
+				result = false;
+			}
+			
+			int right_big_bracket_num = 0;
+			int left_big_bracket_num = 0;
+			int right_small_bracket_num = 0;
+			int left_small_bracket_num = 0;
+			Stack<Integer> bracket_stack = new Stack();
+			
+			for(int j = 0; (j < repeat.length()) && result != false; j++) {
+				int stack_temp = stack.pop();
+				if(stack_temp == ')') {
+					bracket_stack.add(stack_temp);
+					right_small_bracket_num++;
+				} else if (stack_temp == '('){
+					if(bracket_stack.size() > 0) {
+						if(bracket_stack.peek() == ']') {
+							result = false;
+						} else {
+							bracket_stack.pop();
+						}
+					}
+					left_small_bracket_num++;
+				} else if (stack_temp == ']') {
+					bracket_stack.add(stack_temp);
+					right_big_bracket_num++;
+				} else if (stack_temp == '[') {
+					if(bracket_stack.size() > 0) {
+						if(bracket_stack.peek() == ')') {
+							result = false;
+						} else {
+							bracket_stack.pop();
+						}
+					}
+					left_big_bracket_num++;
+				}
+				
+				if(right_big_bracket_num < left_big_bracket_num || right_small_bracket_num < left_small_bracket_num) {
+					result = false;
+				}
+			}
+			
+			if(right_big_bracket_num != left_big_bracket_num || right_small_bracket_num != left_small_bracket_num) {
+				result = false;
+			}
+			
+			if(result == false) {
+				System.out.println("no");
+			} else {
+				System.out.println("yes");
+			}
+			
+		}
+		
+			
+	}
+
+}
