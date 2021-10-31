@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+//using 27600KB Memory, 388ms Time
+
+public class Main{
+	
+	public static void main(String[] args) throws IOException{
+		
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int length = Integer.parseInt(br.readLine());
+		
+		int[] int_array = new int[length];
+		
+		for(int i = 0; i < length; i++) {
+			int_array[i] = Integer.parseInt(br.readLine());
+		}
+		
+		Stack<Integer> stack = new Stack();
+		int push_check = 0;
+		StringBuffer result = new StringBuffer("");
+		
+		for(int i = 0; i < length; i++) {
+			if(stack.size() == 0) {
+				if(push_check < int_array[i]) {
+					if(push_check == 0) {
+						push_check = int_array[i];
+						for(int j = 1; j <= int_array[i]; j++) {
+							stack.push(j);
+							result.append("+\n");
+						}
+					} else {
+						for(int j = push_check+1; j <= int_array[i]; j++) {	
+							stack.push(j);
+							result.append("+\n");
+						}
+						push_check = int_array[i];
+					}
+					stack.pop();
+					result.append("-\n");
+				} 
+			} else {
+				if(stack.peek() > int_array[i]) {
+					result = new StringBuffer("NO");
+					break;
+				} else if (stack.peek() == int_array[i]){
+					stack.pop();
+					result.append("-\n");
+				} else {
+					for(int j = push_check+1; j <= int_array[i]; j++) {	
+						stack.push(j);
+						result.append("+\n");
+					}
+					stack.pop();
+					result.append("-\n");
+					push_check = int_array[i];
+				}
+			}
+		}
+		
+		if(result.substring(0, result.length()).equals("NO")) {
+			System.out.print(result);
+		} else {
+			result = new StringBuffer(result.substring(0, result.length()-1));
+			System.out.print(result);
+		}
+	}
+}
