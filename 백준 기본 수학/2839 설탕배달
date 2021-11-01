@@ -1,0 +1,26 @@
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		int N = scan.nextInt();
+		int count = 0;
+		while(N%5 != 0 && N != 4 && N != 7) {
+			N = N - 3;
+			count++;
+		}
+		while(N/5 != 0 && N != 4 && N != 7) {
+			N = N - 5;
+			count++;
+		}
+		if(count == 0) {
+			System.out.print(-1);
+		} else {
+			System.out.print(count);
+		}
+		
+		
+	}
+
+}
