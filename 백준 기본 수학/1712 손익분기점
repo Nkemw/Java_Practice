@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int absolute_cost = scan.nextInt();
+		int variable_cost = scan.nextInt();
+		int sale_cost = scan.nextInt();
+		
+		int result;
+		
+		while(true) {
+			if(variable_cost >= sale_cost) {
+				System.out.print(-1);
+				break;
+			}
+			result = absolute_cost/(sale_cost - variable_cost) + 1;
+			System.out.print(result);
+			break;
+		}
+		
+	}
+
+}
