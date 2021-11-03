@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		
+		int T = scan.nextInt();
+		int result = 0;
+		
+		for(int i = 0; i < T; i++) {
+			int[] alphabet = new int[26];
+			String str = scan.next();
+			
+			
+			for(int j = 0; j < str.length(); j++) {
+				if(alphabet[str.charAt(j)-'a'] != 0) {
+					if(str.charAt(j) == str.charAt(j-1)) {
+						alphabet[str.charAt(j)-'a']++;
+					} else {
+						break;
+					}
+				} else {
+					alphabet[str.charAt(j)-'a']++;
+				}
+				if(j == str.length()-1) {
+					result++;
+				}
+			}
+			
+		}
+		System.out.print(result);
+		
+	}
+}
