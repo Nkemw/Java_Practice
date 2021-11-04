@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		
+		int T = scan.nextInt();
+		int H, W, customer;
+		
+		
+		
+		for(int i = 0; i < T; i++) {
+			H = scan.nextInt();
+			W = scan.nextInt();
+			customer = scan.nextInt();
+			
+			int result = 0;
+			int height = 0;
+			int width = 1;
+			
+			if(customer%H == 0) {
+				height = H;
+				width += customer/H - 1;
+			} else {
+				height = customer%H;
+				width += customer/H;
+			}
+			
+			result = height*100 + width;
+			System.out.println(result);
+		}
+	}
+}
