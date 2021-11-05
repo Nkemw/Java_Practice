@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		
+		int N = scan.nextInt();
+		
+		int increase = 6;
+		int temp = 1;
+		int result = 1;
+		
+		while(true) {
+			if(temp < N) {
+				temp += increase;
+				increase += 6;
+				result++;
+			} else {
+				break;
+			}
+		}
+		
+		System.out.print(result);
+		
+		
+	}
+}
