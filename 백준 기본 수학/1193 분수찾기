@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		
+		int N = scan.nextInt();
+		int temp = 1;
+		int plus = 2;
+		int count = 1;
+		
+		while(temp < N) {
+			temp += plus;
+			plus++;
+			count++;
+		}
+		int sum = count+1;
+		
+		
+		
+		if(count%2 == 0) {
+			System.out.print(N-(temp-plus+1) + "/" + (sum-(N-(temp-plus+1))));
+			
+		} else {
+			System.out.print(sum-(N-(temp-plus+1)) + "/" + (N-(temp-plus+1)));
+		}
+		
+		
+	}
+}
