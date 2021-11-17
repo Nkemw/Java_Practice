@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		
+		int sum, can_move, move_count, x, y, T;
+		
+		T = scan.nextInt();
+		
+		for(int i = 0; i < T; i++) {
+			sum = 0;
+			can_move = 1;
+			move_count = 0;
+			x = scan.nextInt();
+			y = scan.nextInt();
+			
+			while((sum+can_move) <= (y-x)/2) {
+				sum += can_move;
+				can_move++;
+				move_count += 2;
+			}
+			
+			
+			if(((y-x) - 2*sum) == 0) {
+				
+			} else if(can_move >= (y-x) - 2*sum) {
+				move_count++;
+			} else {
+				move_count += 2;
+			}
+	
+			System.out.println(move_count);
+		}
+		
+	}
+}
