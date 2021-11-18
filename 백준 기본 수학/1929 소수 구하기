@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int[] prime_num = new int[1000001];
+		
+		int M = scan.nextInt();
+		int N = scan.nextInt();
+		
+		for(int i = 2; i < prime_num.length; i++) {
+			prime_num[i] = i;
+		}
+		
+		prime_num[1] = 0;
+		
+		for(int i = 2; i < prime_num.length; i++) {
+			for(int divide = 2; divide <= 1000; divide++) {
+				if(prime_num[i]%divide == 0) {
+					if(!(prime_num[i] == divide)) {
+						prime_num[i] = 0;
+						break;
+					}
+				}
+			}
+		}
+		
+		if(N != 1) {
+			for(int i = M; i <= N; i++) {
+				if(prime_num[i] != 0) {
+					System.out.println(prime_num[i]);
+				}
+			}
+		}
+	}
+}
