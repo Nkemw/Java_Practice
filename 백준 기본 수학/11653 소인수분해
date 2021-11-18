@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int N = scan.nextInt();
+		int divide = 2;
+		
+		if(N != 1) {
+			while(divide <= 10000000) {
+				while(N%divide == 0) {
+					N = N/divide;
+					if(N == 1) {
+						System.out.print(divide);
+					} else {
+						System.out.println(divide);
+					}
+				}
+				divide++;
+			}
+		}
+	}
+}
