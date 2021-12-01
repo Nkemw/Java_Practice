@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int[] num = new int[3];
+		
+		num[0] = scan.nextInt();
+		num[1] = scan.nextInt();
+		num[2] = scan.nextInt();
+		
+		int max;
+		int[] rest_num = new int[2];
+		
+		while(!(num[0] == num[1] && num[0] == num[2] && num[1] == num[2] && num[0] == 0)) {
+			if(num[0] < num[1]) {
+				max = num[1];
+				rest_num[0] = num[0];
+			} else {
+				max = num[0];
+				rest_num[0] = num[1];
+			}
+			
+			if(max < num[2]) {
+				rest_num[1] = max;
+				max = num[2];
+			} else {
+				rest_num[1] = num[2];
+			}
+			
+			if(max*max == rest_num[0]*rest_num[0] + rest_num[1]*rest_num[1]) {
+				System.out.println("right");
+			} else {
+				System.out.println("wrong");
+			}
+			
+			num[0] = scan.nextInt();
+			num[1] = scan.nextInt();
+			num[2] = scan.nextInt();
+			
+		}
+		
+	}
+}
