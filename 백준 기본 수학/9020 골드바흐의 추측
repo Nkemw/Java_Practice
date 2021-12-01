@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int[] prime_num = new int[10001];
+		ArrayList<Integer> prime_list = new ArrayList<>();
+		
+		for(int i = 2; i < prime_num.length; i++) {
+			prime_num[i] = i;
+		}
+		
+		
+		for(int i = 2; i < prime_num.length; i++) {
+			for(int divide = 2; divide <= 1000; divide++) {
+				if(prime_num[i]%divide == 0) {
+					if(!(prime_num[i] == divide)) {
+						prime_num[i] = 0;
+						break;
+					}
+				}
+				
+			}
+			if(prime_num[i] != 0) {
+				prime_list.add(prime_num[i]);
+			}
+		}
+		
+		
+		int n = scan.nextInt();
+		
+		for(int test = 0; test < n; test++) {
+			int number = scan.nextInt();
+			boolean checker = false;
+			for(int i = 0; i < prime_list.size()-1 && checker == false; i++) {
+				for(int j = 0; j < prime_list.size() && j <= i && checker == false; j++) {
+					if(number == (prime_list.get(i) + prime_list.get(j))) {
+						System.out.println(prime_list.get(j) + " " + prime_list.get(i));
+						checker = true;
+					}
+				}
+			}
+		}
+	}
+}
