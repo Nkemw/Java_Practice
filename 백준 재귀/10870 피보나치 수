@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Main{
+	
+	public int fibonacci(int num) {
+		if(num == 0) {
+			return 0;
+		} else if(num < 3){
+			return 1;
+		} else {
+			return fibonacci(num-1) + fibonacci(num-2);
+		}
+	}
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		Main main = new Main();
+		
+		System.out.print(main.fibonacci(scan.nextInt()));
+		
+	}
+}
