@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main{
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int N = scan.nextInt();
+		
+		int sum = 0;
+		int constructor = 0;
+		boolean exist = false;
+		
+		for(int i = 1; i <= N; i++) {
+			sum = 0;
+			String temp = Integer.toString(i);
+			for(int j = 0; j < temp.length(); j++) {
+				sum += temp.charAt(j) - '0';
+			}
+			sum += i;
+			if(sum == N) {
+				exist = true;
+				constructor = i;
+				break;
+			}
+		}
+		
+		if(exist) {
+			System.out.print(constructor);
+		} else {
+			System.out.print(0);
+		}
+	}
+}
