@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main{
+	public static void main(String[] args){
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int N, M;
+		
+		N = scan.nextInt();
+		M = scan.nextInt();
+		
+		int[] cards = new int[N];
+		
+		for(int i = 0; i < cards.length; i++) {
+			cards[i] = scan.nextInt();
+		}
+		
+		int index_a = 0;
+		int index_b = 1;
+		int index_c = 2;
+		int max = 0;
+		
+		while(true) {
+			if(index_c >= cards.length-1) {
+				if(index_b >= cards.length-2) {
+					if(index_a >= cards.length-3) {
+						break;
+					}
+					index_a++;
+					index_b = index_a+1;
+					index_c = index_b+1;
+				} else {
+					index_b++;
+					index_c = index_b+1;
+				}
+			}
+			if(max < cards[index_a] + cards[index_b] + cards[index_c] && M >= cards[index_a] + cards[index_b] + cards[index_c]) {
+				max = cards[index_a] + cards[index_b] + cards[index_c];
+			}
+			
+			index_c++;
+		}
+		System.out.print(max);
+	}
+}
