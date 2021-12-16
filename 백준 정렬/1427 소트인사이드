@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main (String[] args){
+		Scanner scan = new Scanner(System.in);
+		
+		String num = scan.next();
+		
+		ArrayList<Character> tokens = new ArrayList<>();
+		
+		for(int i = 0; i < num.length(); i++) {
+			tokens.add(num.charAt(i));
+		}
+		
+		Collections.sort(tokens);
+		Collections.reverse(tokens);
+		
+		for(int i = 0; i < num.length(); i++) {
+			System.out.print(tokens.get(i));
+		}
+	}
+}
