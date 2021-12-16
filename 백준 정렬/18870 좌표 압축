@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.HashMap;
+
+public class Main{
+	
+	public static void main (String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int[] coordinate = new int[Integer.parseInt(st.nextToken())];
+		
+		st = new StringTokenizer(br.readLine());
+		for(int i = 0; i < coordinate.length; i++) {
+			coordinate[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		int[] compare_array = coordinate.clone();
+		
+		Arrays.sort(coordinate);
+		
+		StringBuilder sb = new StringBuilder();
+		HashMap<Integer, Integer> compressed_coordinate = new HashMap<Integer, Integer>();
+		int rank = 0; 
+		compressed_coordinate.put(coordinate[0], rank);
+		rank++;
+		
+		for(int i = 1; i < coordinate.length; i++) {
+			if(coordinate[i] != coordinate[i-1]) {
+				compressed_coordinate.put(coordinate[i], rank);
+				rank++;
+			}
+		}
+		
+		for(int i = 0; i < coordinate.length; i++) {
+			sb.append(compressed_coordinate.get(compare_array[i]) + " ");
+		}
+		System.out.print(sb);
+	}
+}
