@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		int N = scan.nextInt();
+		
+		int count = 0;
+		int evil = 664;
+		String temp = "";
+		
+		while(count != N) {
+			temp = Integer.toString(evil);
+			
+			if(temp.indexOf("666") != -1) {
+				count++;
+			}
+			
+			if(count == N) {
+				break;
+			}
+			
+			evil++;
+		}
+		System.out.print(evil);
+	}
+
+}
